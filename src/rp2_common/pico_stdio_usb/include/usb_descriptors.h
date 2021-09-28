@@ -1,8 +1,7 @@
-/*
+/* 
  * The MIT License (MIT)
  *
- * Copyright (c) 2020 Raspberry Pi (Trading) Ltd.
- * Copyright (c) 2020 Damien P. George
+ * Copyright (c) 2019 Ha Thach (tinyusb.org)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,22 +20,17 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
  */
 
-#ifndef _PICO_STDIO_USB_TUSB_CONFIG_H
-#define _PICO_STDIO_USB_TUSB_CONFIG_H
+#ifndef USB_DESCRIPTORS_H_
+#define USB_DESCRIPTORS_H_
 
-#include "pico/stdio_usb.h"
+enum
+{
+  VENDOR_REQUEST_WEBUSB = 1,
+  VENDOR_REQUEST_MICROSOFT = 2
+};
 
-#define CFG_TUSB_RHPORT0_MODE   (OPT_MODE_DEVICE)
+extern uint8_t const desc_ms_os_20[];
 
-#define CFG_TUD_CDC             (1)
-#define CFG_TUD_CDC_RX_BUFSIZE  (256)
-#define CFG_TUD_CDC_TX_BUFSIZE  (256)
-
-// Needed for WebSerial support
-#define CFG_TUD_VENDOR            (1)
-#define CFG_TUD_VENDOR_RX_BUFSIZE (TUD_OPT_HIGH_SPEED ? 512 : 64)
-#define CFG_TUD_VENDOR_TX_BUFSIZE (TUD_OPT_HIGH_SPEED ? 512 : 64)
-#endif
+#endif /* USB_DESCRIPTORS_H_ */
